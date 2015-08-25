@@ -1,74 +1,46 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Profile -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Profile %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @profile.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:number) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.number %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:email) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.email %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:city) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.city %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:state) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.state %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:zip_code) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.zip_code %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:university) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.university %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:degree_of_study) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.degree_of_study %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:year) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.year %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:current_employer) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.current_employer %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:title) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.title %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:duties) %></dt>
+      <dd><pre class="prettyprint"><%= @profile.duties %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Number:</strong>
-  <%= @profile.number %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              profiles_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_profile_path(@profile), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              profile_path(@profile),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Email:</strong>
-  <%= @profile.email %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<p>
-  <strong>City:</strong>
-  <%= @profile.city %>
-</p>
-
-<p>
-  <strong>State:</strong>
-  <%= @profile.state %>
-</p>
-
-<p>
-  <strong>Zip code:</strong>
-  <%= @profile.zip_code %>
-</p>
-
-<p>
-  <strong>University:</strong>
-  <%= @profile.university %>
-</p>
-
-<p>
-  <strong>Degree of study:</strong>
-  <%= @profile.degree_of_study %>
-</p>
-
-<p>
-  <strong>Year:</strong>
-  <%= @profile.year %>
-</p>
-
-<p>
-  <strong>Current employer:</strong>
-  <%= @profile.current_employer %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @profile.title %>
-</p>
-
-<p>
-  <strong>Duties:</strong>
-  <%= @profile.duties %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @profile.user %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
