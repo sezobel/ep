@@ -1,0 +1,20 @@
+<%= simple_form_for(@contact) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :profile %>
+    <%= f.association :user %>
+    <%= f.input :name %>
+    <%= f.input :number %>
+    <%= f.input :email %>
+    <%= f.input :city %>
+    <%= f.input :state %>
+    <%= f.input :about_ %>
+    <%= f.input :notes %>
+    <%= f.input :tags %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
