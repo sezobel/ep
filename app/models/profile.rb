@@ -4,4 +4,5 @@ class Profile < ActiveRecord::Base
   has_many :contacts
   has_many :ideas
   validates_formatting_of :number, using: :us_phone
+  validates_formatting_of :email, using: :email
 end
