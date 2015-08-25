@@ -5,4 +5,5 @@ class Profile < ActiveRecord::Base
   has_many :ideas
   validates_formatting_of :number, using: :us_phone
   validates_formatting_of :email, using: :email
+  validates_formatting_of :zip_code, using: :us_zip
 end
