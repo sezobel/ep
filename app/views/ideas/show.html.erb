@@ -1,29 +1,28 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Ideas -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ideas %></h1>
+</div>
 
-<p>
-  <strong>Profile:</strong>
-  <%= @idea.profile %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:project_name) %></dt>
+      <dd><pre class="prettyprint"><%= @ideas.project_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:project_description) %></dt>
+      <dd><pre class="prettyprint"><%= @ideas.project_description %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:business_plan) %></dt>
+      <dd><pre class="prettyprint"><%= @ideas.business_plan %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Project name:</strong>
-  <%= @idea.project_name %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              ideas_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_ideas_path(@ideas), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              ideas_path(@ideas),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Project description:</strong>
-  <%= @idea.project_description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @idea.user %>
-</p>
-
-<p>
-  <strong>Business plan:</strong>
-  <%= @idea.business_plan %>
-</p>
-
-<%= link_to 'Edit', edit_idea_path(@idea) %> |
-<%= link_to 'Back', ideas_path %>

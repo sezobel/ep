@@ -1,33 +1,40 @@
-<h1>Listing ideas</h1>
-
-<table>
+<%- model_class = Ideas -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Ideas %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Profile</th>
-      <th>Project name</th>
-      <th>Project description</th>
-      <th>User</th>
-      <th>Business plan</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:project_name) %></th>
+      <th><%= model_class.human_attribute_name(:project_description) %></th>
+      <th><%= model_class.human_attribute_name(:business_plan) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
-    <% @ideas.each do |idea| %>
+    <% @ideas.each do |ideas| %>
       <tr>
-        <td><%= idea.profile %></td>
-        <td><%= idea.project_name %></td>
-        <td><%= idea.project_description %></td>
-        <td><%= idea.user %></td>
-        <td><%= idea.business_plan %></td>
-        <td><%= link_to 'Show', idea %></td>
-        <td><%= link_to 'Edit', edit_idea_path(idea) %></td>
-        <td><%= link_to 'Destroy', idea, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= ideas.id %></td>
+        <td><%= ideas.project_name %></td>
+        <td><%= ideas.project_description %></td>
+        <td><%= ideas.business_plan %></td>
+        <td><%=l ideas.created_at, format: :long %></td>
+        <td>
+          <%= link_to ideas_path(ideas), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to ideas_path(ideas), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Idea', new_idea_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_ideas_path,
+            :class => 'btn btn-primary' %>
